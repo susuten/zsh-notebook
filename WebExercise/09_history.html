@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>访问历史API</title>
+    <style>
+    	html,body {
+    		height: 100%;
+    		margin: 0;
+    		padding: 0;
+            overflow: hidden;
+    		
+    	}
+    	aside {
+            float: left;
+            width: 220px;
+            height: 100%;
+            background: #ddd;
+
+    	}
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul > li {
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 50px;
+            margin: 5px 0;
+            text-align: center;
+        }
+        ul> li::before {
+            content: '🍋';
+            margin-right: 5px;
+        }
+         ul > li:hover {
+             background-color: #c0c0c0;
+         }   
+    	article {
+            height: 100%;
+            overflow: scroll;
+            background: #e9e9e9;
+            margin-left: 220px;
+            padding: 20px;
+    	}
+        article > p {
+            font-size: 20px;
+            line-height: 2;
+        }
+
+    </style>
+</head>
+<body>
+    <aside>
+        <ul id="list"></ul>
+    </aside>
+    <article>
+        <p id="content"></p>
+  </article>
+<script src="data.js"></script>
+    <script>
+        (function(){
+            // 获取所有需要操作的DOM对象
+            var list = document.querySelector('#list');
+            var content = document.querySelector('#content');
+            //先展示数据
+            for(var title in data){
+                var liElement = document.createElement('li');
+                console.log(liElement);
+                liElement.setAttribute('data-title',title);
+                liElement.innerHTML = title;
+                list.appendChild(liElement);
+                // 为每个li注册点击事件
+                liElement.addEventListener('click',function(e){
+                    content.innerHTML = data[this.dataset.title];
+                    if(window.history && history.pushState){
+                        // 支持历史状态操作
+                        history.pushState(this.dataset.title, 'title useless', '?t='+this.dataset.title);
+
+                    }
+                });
+            }
+            // 在历史状态中前进后退触发该事件
+            window.addEventListener('popstate',function(e){
+                console.log(e.state);
+                content.innerHTML = data[e.state];
+            });
+
+        })();
+    </script>
+
+
+</body>
+</html>
+

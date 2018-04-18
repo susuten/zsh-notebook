@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "zh-CN">
+    <title>应用程序标签</title>
+    <style>
+    	.my-progress {
+    		-webkit-appearance: none;
+    	}
+    	.mu-progress::-webkit-progress-bar{
+    		background-color: #111;
+    	}
+    	.content::after{
+    		content: "bbb";
+    		color: #aaa;
+    	}
+    </style>
+</head>
+<body>
+	<div class = "content">aaa</div>
+	<progress class = "my-progress" value = "18" max = "100"></progress>	  <!-- 进度条 --> 
+	<meter min = "0" max = "100" low = "40" high = "90" optimum = "100" value = "91">A+</meter>
+</body>
+</html>

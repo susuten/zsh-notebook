@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>history</title>
+</head>
+<body>
+    <input onclick = "add()" type = "button" value = "添加一个历史记录">
+    <script>
+        function add() {
+            if(window.history && history.pushState){
+                history.pushState('数据','设置历史状态显示的标题，但是浏览器不支持','?demo=' + new Date().toLocaleTimeString());
+            }else{
+
+            }
+        }
+        window.addEventListener('popstate',function(e){
+            console.log('111' + e.state);
+        })
+    </script>
+</body>
+</html>
