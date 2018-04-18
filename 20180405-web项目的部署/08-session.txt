@@ -1,0 +1,6 @@
+#### session
+
+String name = request.getParameter("name");
+HttpSession session = request.getSession();	// 得到HttpSession对象
+session.ssetAttribute("name", name);
+String name = (String)session.getAttribute("name");

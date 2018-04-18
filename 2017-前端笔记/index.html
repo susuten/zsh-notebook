@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-family: "Times New Roman", "Microsoft Yahei";
+			font-size: 14px;
+			background: url("bg.jpg") no-repeat;
+		}
+		.c1{
+			/*background-color: #aaaaaa;*/
+			width:30%;
+			margin-top: 100px;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+		}
+		td{
+			text-align: left;
+		}
+		.c2{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class = "c1">
+	<!--  	<form>
+			<table border="1">
+				<thead>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>生日</th>
+					<th>地址</th>
+				</thead>
+				<tr>
+					<td>a1</td>
+					<td>b1</td>
+					<td>c1</td>
+					<td>d1</td>
+				</tr>
+				<tr>
+					<td>a2</td>
+					<td>b2</td>
+					<td>c2</td>
+					<td>d2</td>
+				</tr>
+
+			</table>
+		</form>   
+	-->
+		<form>
+			<h1>个人信息录入</h1>
+			<table style="width:100%;">
+				<tr>
+					<td>姓名：</td>
+					<td><input type = "text" name = "name" style="width:98%;"></td>
+				</tr>
+				<tr>
+					<td>性别：</td>
+					<td>
+						<input type="radio" name="sex" value="male" checked>男
+						<input type="radio" name="sex" value="female">女
+						<input type = "radio" name = "sex" value = "secret">保密
+					</td>
+				</tr>
+				<tr>
+					<td>出生年月：</td>
+					<td>
+						<select name = "year" style="width:30%;">
+							<option value = "1990">1990</option>
+							<option value = "1990">1991</option>
+							<option value = "1990">1992</option>
+							<option value = "1990">1993</option>
+							<option value = "1990">1994</option>
+							<option value = "1990">1995</option>
+							<option value = "1990">1996</option>
+							<option value = "1990">1997</option>
+							<option value = "1990">1998</option>
+							<option value = "1990">1999</option>年
+						</select>
+						年
+						<select name = "month" style="width:20%;">
+							<option value = "1">1</option>
+							<option value = "2">2</option>
+							<option value = "3">3</option>
+							<option value = "4">4</option>
+							<option value = "5">5</option>
+							<option value = "6">6</option>
+							<option value = "7">7</option>
+							<option value = "8">8</option>
+							<option value = "9">9</option>
+							<option value = "10">10</option>
+							<option value = "11">11</option>
+							<option value = "12">12</option>
+						</select>
+						月
+						<select name = "day" style="width:20%;">
+							<option value = "1">1</option>
+							<option value = "2">2</option>
+							<option value = "3">3</option>
+							<option value = "4">4</option>
+							<option value = "5">5</option>
+							<option value = "6">6</option>
+							<option value = "7">7</option>
+							<option value = "8">8</option>
+							<option value = "9">9</option>
+							<option value = "10">10</option>
+							<option value = "11">11</option>
+							<option value = "12">12</option>
+							<option value = "13">13</option>
+							<option value = "14">14</option>
+							<option value = "15">15</option>
+							<option value = "16">16</option>
+							<option value = "17">17</option>
+							<option value = "18">18</option>
+							<option value = "19">19</option>
+							<option value = "20">20</option>
+							<option value = "21">21</option>
+							<option value = "22">22</option>
+							<option value = "23">23</option>
+							<option value = "24">24</option>
+							<option value = "25">25</option>
+							<option value = "26">26</option>
+							<option value = "27">27</option>
+							<option value = "28">28</option>
+							<option value = "29">29</option>
+							<option value = "30">30</option>
+							<option value = "31">31</option>
+						</select>
+						日
+					</td>
+				</tr>
+				<tr>
+					<td>学历：</td>
+					<td>
+						<select>
+							<option value = "dazhuan">大专</option>
+							<option value = "benke">本科</option>
+							<option value = "yanjiusheng">研究生</option>
+							<option value = "shuoshi">硕士</option>
+							<option value = "boshi">博士</option>
+							<option value = "boshihou">博士后</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>邮箱：</td>
+					<td>
+						<input type = "text" name = "E-mail">
+						<select>
+							<option value = "@qq.com">@qq.com</option>
+							<option value = "@163.com">@163.com</option>
+							<option value = "@126.com">@126.com</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>电话：</td>
+					<td>
+						<input type = "text" name = "Tel" style="width:98%;">
+					</td>
+				</tr>
+				<tr>
+					<td>地址：</td>
+					<td>
+						<input type = "text" name = "Adress" style="width:98%;">
+					</td>
+					
+				</tr>
+				<tr>
+					<td colspan = "2" style = " text-align: center;">
+						<input type = "submit" value = "OK" class = "c2">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

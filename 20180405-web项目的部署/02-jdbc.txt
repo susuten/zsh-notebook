@@ -1,0 +1,112 @@
+﻿JDBC
+
+一、类介绍
+
+1. DriverManager: 通过驱动，建立与数据库间的连接
+
+2. Connection：代表着与数据库间的连接
+
+3. Statement：代表着要执行的SQL语句
+
+4. ResultSet：代表着数据库查询到的结果集
+
+二、操作
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+// 动态导入数据库的驱动
+Class.forName("com.mysql.jdbc.Driver");
+
+// 获取数据库链接
+conn = DriverManager.getConnection(
+"jdbc:mysql://localhost:3306/zheng", "root", "");
+
+// 创造SQL语句
+String sql = "INSERT INTO user_list ( user_name, user_password ) VALUES ( ‘zheng', '123' )";
+
+// 执行SQL语句
+Statement stmt = conn.createStatement();
+stmt.executeUpdate(sql);
+//execute方法表示返回多个结果集，一般不用
+
+三、带参数的SQL查询
+
+package zsh;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+public class WithCanshu {
+	public static void main(String[] args)throws Exception {
+		// 动态导入数据库的驱动
+		Class.forName("com.mysql.jdbc.Driver");
+		// 获取数据库连接
+		Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/zsh","root", "root");
+		// 创造SQL语句		
+		String sql = "select * from users where name = ?";
+		// 创造SQL语句
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		// 参数赋值
+		stmt.setString(1,"yl");
+		// 移动到下一条数据
+		ResultSet rs = stmt.executeQuery();
+		if(rs.next()) {
+			System.out.println("password:" + rs.getString("password"));
+		}
+		conn.close();
+	}
+}
+
+四、事务
+
+1. 特性：原子性（Atomicity）、一致性(Consistency)、隔离性(Isolation)、持续性(Durability)
+
+2. 代码
+package zsh;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+public class ShiWu {
+	public static void main(String[] args)throws Exception {
+		Connection conn = null;
+		Statement stmt = null;
+		try {
+		// 动态导入数据库的驱动
+		Class.forName("com.mysql.jdbc.Driver");
+		// 获取数据库链接
+		conn = DriverManager.getConnection(
+		"jdbc:mysql://localhost:3306/zsh", "root", "root");
+		// 开启事务
+		conn.setAutoCommit( false );
+		// 创造SQL语句
+		String sql = "INSERT INTO users (id, name, password ) VALUES ('008', 'zshua', '888' )";
+		// 执行SQL语句
+		stmt = conn.createStatement();
+		stmt.executeUpdate(sql);
+		// 提交事务
+		conn.commit();
+		} catch (Exception e) {
+		// 回滚事务
+		try {
+		conn.rollback();
+		} catch ( Exception e2 ) {}
+		}
+
+	}
+}
+
+（1）开启事务 conn.setAutoCommit(false);
+（2）提交事务 conn.commit();
+（3）回滚事务 conn.rollback();
+
+五、Blob与Clob字段的处理
+
+1. 数据库中大对象，即LOB，有两种存储方式，也可以说分为两类
+
+（1）数据和索引都存储在本身的字段中，即和表存储在同一个字段中		CLOB、BLOB
+
+（2）表的字段里只存了数据所在段的索引，而数据统一放在一个单独的LOB段中	BFILE
+
+2. Clob一般用于字符型的存取，相当于原来的long类型，但比他更优；Blob用于存储二进制类型的数据；要保存图片、word文件最好用Blob

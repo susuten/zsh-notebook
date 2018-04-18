@@ -1,0 +1,6 @@
+
+1. 打开注册表:window + R 然后输入 “regedit”
+
+2. 查找:ctrl + f
+
+	

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style> 
+      
+    </style>
+    <script>
+        window.onload = function(){
+            //升级版
+            function getClass(classname, id)
+            {
+                //浏览器支持的情况
+                if(document.getElementsByClassName)
+                {
+                    // 如果有id
+                    if(id)
+                    {
+                        var eleId = document.getElementById(id);
+                        return eleId.getElementsByClassName(classname);
+                    }
+                    else
+                    {
+                        return document.getElementsByClassName(classname);
+                    }
+                }
+                // 以下为浏览器不支持的情况所进行的操作
+                if(id)  // 如果有id
+                {
+                    var eleId = document.getElementById(id);
+                    var dom = eleId.getElementsByTagName("*")
+                }
+                else
+                {
+                    var dom = document.getElementsByTagName("*");
+                }
+                var arr = [];
+                for( var i = 0 ; i < dom.length; i++ )
+                {
+                    var txt = dom[i].className.split(" ");
+                    for( var j = 0; j < txt.length; j++ )
+                    {
+                        if( txt[j].className = classname )
+                        {
+                            arr.push(dom[i]);
+                        }
+                    }
+                }
+                return arr;
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
