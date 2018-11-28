@@ -166,9 +166,11 @@ async function myFunction() {
     });
 }
 ```
+
 - await 命令只能用在 async 函数中，如果用在普通函数，就会报错
 
 - 如果希望多个请求并发执行，可以使用 Promise.all 方法
+
 
 ## await
 ### 什么是 await
