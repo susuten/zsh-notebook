@@ -150,6 +150,7 @@ asyncPrint('hello world', 1000);
 
 ### take care
 - await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try...catch代码块中
+
 ```
 async function myFunction () {
     try {
